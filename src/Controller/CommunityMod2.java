@@ -73,13 +73,17 @@ public class CommunityMod2 extends HttpServlet {
 	
 		if(proResult>0) {
 				RequestDispatcher rd = request.getRequestDispatcher("alert.jsp");
-				request.setAttribute("result", 1);
+				request.setAttribute("result", 9);
+				request.setAttribute("Num", bib.getNum());
+				request.setAttribute("page", 1);
 				request.setAttribute("value", "정상적으로 수정되었습니다.");
 				rd.forward(request, response);
 				
 			} else {
 			RequestDispatcher rd = request.getRequestDispatcher("alert.jsp");
-			request.setAttribute("result", 1);
+			request.setAttribute("result", 9);
+			request.setAttribute("Num", bib.getNum());
+			request.setAttribute("page", 1);
 			request.setAttribute("value", "수정이 실패하였습니다.");
 			rd.forward(request, response);
 			}

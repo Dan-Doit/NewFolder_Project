@@ -37,6 +37,10 @@
 	      alert("${value}");
 	      location.href="GetStoreInfo?request=${state}";
 	   }
+	else if (${result}==9) {
+	      alert("${value}");
+	      location.href="oneCommunityView?Num=${Num}&page=${page}";
+	   }
 	
 	
 })();

@@ -539,10 +539,12 @@ public class DataAccessObject {
 	public void getRecommendRst(ArrayList<StoreInfoBean> storeList, String add, String caCode) {
 		
 		StoreInfoBean sib;
-		String sql="SELECT ST_NAME,ST_LOCATION,ST_COMMENT,ST_TEL,ST_FILENAME FROM STORE\r\n"
-				+ "WHERE ST_CODE LIKE ? AND ST_CACODE = (SELECT  FO_CACODE FROM FOODS\r\n"
-				+ "INNER JOIN CATEGORY ON FO_CACODE = CA_CODE\r\n"
-				+ "WHERE FO_CODE=?) AND ST_STATE='L'";
+		String sql="SELECT * FROM(SELECT * FROM\r\n"
+	            + "(SELECT ST_NAME,ST_LOCATION,ST_COMMENT,ST_TEL,ST_FILENAME FROM STORE\r\n"
+	            + "WHERE ST_CODE LIKE ? AND ST_CACODE = (SELECT FO_CACODE FROM FOODS\r\n"
+	            + "INNER JOIN CATEGORY ON FO_CACODE = CA_CODE\r\n"
+	            + "WHERE FO_CODE=?) AND ST_STATE='L')ORDER BY DBMS_RANDOM.VALUE)\r\n"
+	            + "WHERE ROWNUM <=3";
 
 		try {
 			pstmt = con.prepareStatement(sql);

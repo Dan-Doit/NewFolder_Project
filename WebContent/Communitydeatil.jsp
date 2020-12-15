@@ -292,13 +292,13 @@
 							<!-- 좋아요 버튼 -->
 							<div class="form-group" style="float: left;">
 								<a
-									href="ThumbsControll?Num=${view.getNum()}&value=1&Cmeid=${view.getWriterId()}&meid=${id}"><input
+									href="ThumbsControll?Num=${view.getNum()}&value=1&Cmeid=${view.getWriterId()}&meid=${id}&page=${page}"><input
 									type="button" value="LIKE IT" class="btn btn-primary aaaa1"></a>
 							</div>
 							<!-- 싫어요 버튼 -->
 							<div class="form-group">
 								<a
-									href="ThumbsControll?Num=${view.getNum()}&value=-1&Cmeid=${view.getWriterId()}&meid=${id}"><input
+									href="ThumbsControll?Num=${view.getNum()}&value=-1&Cmeid=${view.getWriterId()}&meid=${id}&page=${page}"><input
 									type="button" value="DON'T LIKE IT"
 									class="btn btn-primary aaaa2"></a>
 							</div>

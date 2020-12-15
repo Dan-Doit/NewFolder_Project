@@ -36,18 +36,22 @@ public class ThumbsControll extends HttpServlet {
 		bib.setWriter(request.getParameter("Cmeid"));//작성자
 		bib.setNum(Integer.parseInt(request.getParameter("Num")));
 		bib.setThumbs(Integer.parseInt(request.getParameter("value")));
-		
+		String page = request.getParameter("page");
 		
 		CommunityService cs = new CommunityService();
 		int result = cs.enterance(8, 0, 0, null, bib);
 		if (result>0) {
 			RequestDispatcher rd = request.getRequestDispatcher("alert.jsp");
-			request.setAttribute("result", 5);
+			request.setAttribute("result", 9);
+			request.setAttribute("Num", bib.getNum());
+			request.setAttribute("page", page);
 			request.setAttribute("value", "투표해 주셔서 감사합니다.");
 			rd.forward(request, response);
 		}else {
 			RequestDispatcher rd = request.getRequestDispatcher("alert.jsp");
-			request.setAttribute("result", 5);
+			request.setAttribute("result", 9);
+			request.setAttribute("Num", bib.getNum());
+			request.setAttribute("page", page);
 			request.setAttribute("value", "이미 투표하셨습니다.");
 			rd.forward(request, response);
 			
